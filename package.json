@@ -1,6 +1,6 @@
 {
   "name": "bytes2hex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "bytes(ArrayBuffer/DataView/Buffer) -> string",
   "main": "bytes2hex.js",
   "scripts": {
