@@ -36,52 +36,24 @@
   }
 
   e.b5s = function(dv, byteOffset, littleEndian){
-    const b5 = dv.getUint32(byteOffset, littleEndian)
-    const hi = b5 >>> 16
-    const lo = b5 & 0xffff
-    return e.b4s(hi) + e.b4s(lo)
+    return [
+      e.b4s(dv, byteOffset+0),
+      e.b4s(dv, byteOffset+2),
+    ].join("")
   }
 
   e.b6s = function(dv, byteOffset, littleEndian){
-    const hi = dv.getUint32(byteOffset + 0, littleEndian)
-    const lo = dv.getUint32(byteOffset + 4, littleEndian)
-    return e.b5s(hi) + e.b5s(lo)
+    return [
+      e.b5s(dv, byteOffset+0),
+      e.b5s(dv, byteOffset+4),
+    ].join("")
   }
 
   e.b7s = function(dv, byteOffset, littleEndian){
     return [
-      dv.getUint32(byteOffset +  0, littleEndian),
-      dv.getUint32(byteOffset +  4, littleEndian),
-      dv.getUint32(byteOffset +  8, littleEndian),
-      dv.getUint32(byteOffset + 12, littleEndian),
-    ].map(function(b5){ return e.b5s(b5) })
-    .join("")
-  }
-
-  e.b8s = function(dv, byteOffset, littleEndian){
-    return [
-      dv.getUint32(byteOffset +  0, littleEndian), dv.getUint32(byteOffset +  4, littleEndian),
-      dv.getUint32(byteOffset +  8, littleEndian), dv.getUint32(byteOffset + 12, littleEndian),
-
-      dv.getUint32(byteOffset + 16, littleEndian), dv.getUint32(byteOffset + 20, littleEndian),
-      dv.getUint32(byteOffset + 24, littleEndian), dv.getUint32(byteOffset + 28, littleEndian),
-    ].map(function(b5){ return e.b5s(b5) })
-    .join("")
-  }
-
-  e.b9s = function(dv, byteOffset, littleEndian){
-    return [
-      dv.getUint32(byteOffset +  0, littleEndian), dv.getUint32(byteOffset +  4, littleEndian),
-      dv.getUint32(byteOffset +  8, littleEndian), dv.getUint32(byteOffset + 12, littleEndian),
-      dv.getUint32(byteOffset + 16, littleEndian), dv.getUint32(byteOffset + 20, littleEndian),
-      dv.getUint32(byteOffset + 24, littleEndian), dv.getUint32(byteOffset + 28, littleEndian),
-
-      dv.getUint32(byteOffset + 32, littleEndian), dv.getUint32(byteOffset + 36, littleEndian),
-      dv.getUint32(byteOffset + 40, littleEndian), dv.getUint32(byteOffset + 44, littleEndian),
-      dv.getUint32(byteOffset + 48, littleEndian), dv.getUint32(byteOffset + 52, littleEndian),
-      dv.getUint32(byteOffset + 56, littleEndian), dv.getUint32(byteOffset + 60, littleEndian),
-    ].map(function(b5){ return e.b5s(b5) })
-    .join("")
+      e.b6s(dv, byteOffset+0),
+      e.b6s(dv, byteOffset+8),
+    ].join("")
   }
 
 })
