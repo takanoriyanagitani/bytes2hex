@@ -28,11 +28,11 @@
 
   e.b3s = function(dv, byteOffset){ return bsmap[dv.getUint8(byteOffset)] }
 
-  e.b4s = function(dv, byteOffset, littleEndian){
-    const b4 = dv.getUint16(byteOffset, littleEndian)
-    const hi = b4 >>> 8
-    const lo = b4 & 0xff
-    return e.b3s(hi) + e.b3s(lo)
+  e.b4s = function(dv, byteOffset){
+    return [
+      e.b3s(dv, byteOffset+0),
+      e.b3s(dv, byteOffset+1),
+    ].join("")
   }
 
   e.b5s = function(dv, byteOffset, littleEndian){

@@ -14,4 +14,15 @@ describe("bytes2hex.js", () => {
 
   })
 
+  describe("b4s", () => {
+
+    test("3776", () => {
+      const d = new DataView(new ArrayBuffer(2))
+      d.setUint16(0, 0x3776)
+      const s = Bytes2Hex.b4s(d, 0)
+      expect(s).toBe("3776")
+    })
+
+  })
+
 })
