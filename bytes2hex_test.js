@@ -24,6 +24,16 @@ describe("bytes2hex.js", () => {
     })
 
   })
+  describe("b4sl", () => {
+
+    test("0599", () => {
+      const d = new DataView(new ArrayBuffer(2))
+      d.setUint16(0, 0x9905)
+      const s = Bytes2Hex.b4sl(d, 0)
+      expect(s).toBe("0599")
+    })
+
+  })
 
   describe("b5s", () => {
 
@@ -32,6 +42,16 @@ describe("bytes2hex.js", () => {
       d.setUint32(0, 0x19700101)
       const s = Bytes2Hex.b5s(d, 0)
       expect(s).toBe("19700101")
+    })
+
+  })
+  describe("b5sl", () => {
+
+    test("19691231", () => {
+      const d = new DataView(new ArrayBuffer(4))
+      d.setUint32(0, 0x31126919)
+      const s = Bytes2Hex.b5sl(d, 0)
+      expect(s).toBe("19691231")
     })
 
   })
@@ -47,6 +67,17 @@ describe("bytes2hex.js", () => {
     })
 
   })
+  describe("b6sl", () => {
+
+    test("3776059906340333", () => {
+      const d = new DataView(new ArrayBuffer(8))
+      d.setUint32(0, 0x33033406)
+      d.setUint32(4, 0x99057637)
+      const s = Bytes2Hex.b6sl(d, 0)
+      expect(s).toBe("3776059906340333")
+    })
+
+  })
 
   describe("b7s", () => {
 
@@ -58,6 +89,19 @@ describe("bytes2hex.js", () => {
       d.setUint32(12, 0x65634333)
       const s = Bytes2Hex.b7s(d, 0)
       expect(s).toBe("29979245810132527315980665634333")
+    })
+
+  })
+  describe("b7sl", () => {
+
+    test("42273152997924580123456789abcdef", () => {
+      const d = new DataView(new ArrayBuffer(16))
+      d.setUint32( 0, 0xefcdab89)
+      d.setUint32( 4, 0x67452301)
+      d.setUint32( 8, 0x58247999)
+      d.setUint32(12, 0x52312742)
+      const s = Bytes2Hex.b7sl(d, 0)
+      expect(s).toBe("42273152997924580123456789abcdef")
     })
 
   })

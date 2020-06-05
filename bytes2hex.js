@@ -34,25 +34,49 @@
       e.b3s(dv, byteOffset+1),
     ].join("")
   }
+  e.b4sl = function(dv, byteOffset){
+    return [
+      e.b3s(dv, byteOffset+1),
+      e.b3s(dv, byteOffset+0),
+    ].join("")
+  }
 
-  e.b5s = function(dv, byteOffset, littleEndian){
+  e.b5s = function(dv, byteOffset){
     return [
       e.b4s(dv, byteOffset+0),
       e.b4s(dv, byteOffset+2),
     ].join("")
   }
+  e.b5sl = function(dv, byteOffset){
+    return [
+      e.b4sl(dv, byteOffset+2),
+      e.b4sl(dv, byteOffset+0),
+    ].join("")
+  }
 
-  e.b6s = function(dv, byteOffset, littleEndian){
+  e.b6s = function(dv, byteOffset){
     return [
       e.b5s(dv, byteOffset+0),
       e.b5s(dv, byteOffset+4),
     ].join("")
   }
+  e.b6sl = function(dv, byteOffset){
+    return [
+      e.b5sl(dv, byteOffset+4),
+      e.b5sl(dv, byteOffset+0),
+    ].join("")
+  }
 
-  e.b7s = function(dv, byteOffset, littleEndian){
+  e.b7s = function(dv, byteOffset){
     return [
       e.b6s(dv, byteOffset+0),
       e.b6s(dv, byteOffset+8),
+    ].join("")
+  }
+  e.b7sl = function(dv, byteOffset){
+    return [
+      e.b6sl(dv, byteOffset+8),
+      e.b6sl(dv, byteOffset+0),
     ].join("")
   }
 
