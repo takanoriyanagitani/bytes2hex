@@ -1,0 +1,4 @@
+jest.config.js
+.github/
+docs
+bytes2hex_test.js
